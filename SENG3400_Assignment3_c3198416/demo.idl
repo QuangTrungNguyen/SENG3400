@@ -1,0 +1,8 @@
+module DemoApp
+{
+   interface Demo
+   {
+      string getRandomChar();
+   };
+};
+

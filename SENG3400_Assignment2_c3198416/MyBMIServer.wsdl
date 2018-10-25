@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost:8080/axis/MyBMIServer.jws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://localhost:8080/axis/MyBMIServer.jws" xmlns:intf="http://localhost:8080/axis/MyBMIServer.jws" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+
+   <wsdl:message name="calcBMIResponse">
+
+      <wsdl:part name="calcBMIReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="listWeightsRequest">
+
+      <wsdl:part name="height" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="listRangesRequest">
+
+   </wsdl:message>
+
+   <wsdl:message name="listRangesResponse">
+
+      <wsdl:part name="listRangesReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="calcBMIRequest">
+
+      <wsdl:part name="weight" type="xsd:string"/>
+
+      <wsdl:part name="height" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="listWeightsResponse">
+
+      <wsdl:part name="listWeightsReturn" type="xsd:string"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="MyBMIServer">
+
+      <wsdl:operation name="listRanges">
+
+         <wsdl:input message="impl:listRangesRequest" name="listRangesRequest"/>
+
+         <wsdl:output message="impl:listRangesResponse" name="listRangesResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calcBMI" parameterOrder="weight height">
+
+         <wsdl:input message="impl:calcBMIRequest" name="calcBMIRequest"/>
+
+         <wsdl:output message="impl:calcBMIResponse" name="calcBMIResponse"/>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listWeights" parameterOrder="height">
+
+         <wsdl:input message="impl:listWeightsRequest" name="listWeightsRequest"/>
+
+         <wsdl:output message="impl:listWeightsResponse" name="listWeightsResponse"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="MyBMIServerSoapBinding" type="impl:MyBMIServer">
+
+      <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="listRanges">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listRangesRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listRangesResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/axis/MyBMIServer.jws" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="calcBMI">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="calcBMIRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="calcBMIResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/axis/MyBMIServer.jws" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="listWeights">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="listWeightsRequest">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://DefaultNamespace" use="encoded"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="listWeightsResponse">
+
+            <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8080/axis/MyBMIServer.jws" use="encoded"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="MyBMIServerService">
+
+      <wsdl:port binding="impl:MyBMIServerSoapBinding" name="MyBMIServer">
+
+         <wsdlsoap:address location="http://localhost:8080/axis/MyBMIServer.jws"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
